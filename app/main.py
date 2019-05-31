@@ -14,6 +14,7 @@
 
 """Main module for App Engine app."""
 import json
+import logging
 
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
@@ -35,6 +36,7 @@ def recommendation():
     user_address = request.args.get('user_address')
     user_address = user_address.lower() if user_address is not None else None
     num_recs = request.args.get('num_recs')
+    logging.info('Fetching recommendations for ' + user_address)
 
     # validate args
     if user_address is None:
@@ -53,6 +55,7 @@ def recommendation():
         return 'User address not found : %s' % user_address, 400
 
     json_response = json.dumps(rec_list)
+    logging.info('Response for ' + user_address + '\n' + json_response)
     return json_response, 200
 
 

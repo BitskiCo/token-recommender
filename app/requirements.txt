@@ -1,7 +1,7 @@
 flask
 flask-cors
-gunicorn
+gunicorn==19.9.0
 pandas
-numpy
+numpy==1.16.2
 google-cloud-storage==1.6.0
 lightfm
